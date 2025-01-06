@@ -1,4 +1,4 @@
-package com.example.inventoryservice.security;
+package com.example.orderservice.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

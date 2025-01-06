@@ -7,9 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.awt.*;
 import java.util.List;
-import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @SpringBootApplication
 public class InventoryServiceApplication {
@@ -21,10 +20,11 @@ public class InventoryServiceApplication {
 	@Bean
 	CommandLineRunner start(ProductRepository productRepository){
 		return args -> {
+			AtomicInteger i= new AtomicInteger(1);
 			List.of("Lenovo","HP","MacBook","Pavillon","Alienware","Smartphone").forEach(productName ->{
 				productRepository.save(
 						Product.builder()
-								.id(UUID.randomUUID().toString())
+								.id("P0"+ i.getAndIncrement())
 								.name(productName)
 								.quantity((int) (Math.random() * 100) + 1)
 								.price(Math.random() * 10_000 + 2000)
